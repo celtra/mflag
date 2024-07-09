@@ -92,7 +92,7 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/docker/docker/pkg/homedir"
+	"github.com/moby/moby/pkg/homedir"
 )
 
 // ErrHelp is the error returned if the flag -help is invoked but no such flag is defined.
@@ -561,7 +561,7 @@ func (fs *FlagSet) PrintDefaults() {
 			val := flag.DefValue
 
 			if home != "" && strings.HasPrefix(val, home) {
-				val = homedir.GetShortcutString() + val[len(home):]
+				val = homedir.Get() + val[len(home):]
 			}
 
 			if isZeroValue(val) {
